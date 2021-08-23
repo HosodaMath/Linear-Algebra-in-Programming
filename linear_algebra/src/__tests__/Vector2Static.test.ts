@@ -1,6 +1,6 @@
 import * as Vector from "../vector/vector2";
 
-describe("methods in Vector2", () => {
+describe("static methods in Vector2", () => {
   test("The Components of the vector v are 1 and 2", () => {
     const v = new Vector.Vector2(1, 2);
     const key = Vector.Vector2.toArray(v);

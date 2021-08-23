@@ -2,7 +2,9 @@
 
 ## TypeScript
 
-### methods
+#### Vector2
+
+##### methods
 
 -[x] add
 -[x] sub
@@ -11,7 +13,7 @@
 -[x] dot
 -[x] cross
 
-### static methods
+##### static methods
 
 -[x] add
 -[x] sub
@@ -19,3 +21,14 @@
 -[x] multivec
 -[x] dot
 -[x] cross
+
+#### Matrix2
+
+-[x] init
+-[x] create
+-[x] zero
+-[x] identity
+-[x] add
+-[x] sub
+-[x] multi
+-[x] scalarMulti
