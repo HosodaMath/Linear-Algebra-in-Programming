@@ -54,7 +54,7 @@ export class Vector2 {
    * @param s スカラー値
    * @returns ベクトルをスカラー倍した結果を返す
    */
-  multi = (s: number): Vector2 => {
+  multiScalar = (s: number): Vector2 => {
     this.x = this.x * s;
     this.y = this.y * s;
 
@@ -81,7 +81,7 @@ export class Vector2 {
    * @returns 割り算した結果を返す
    */
   div = (s: number): Vector2 => {
-    return this.multi(1.0 / s);
+    return this.multiScalar(1.0 / s);
   };
 
   /**
@@ -142,7 +142,7 @@ export class Vector2 {
    * @description 大きさを求める2 平方和の平方根を求める関数hypotと同じ
    * @returns 平方和の平方根で計算した結果を返す
    */
-  magnitude = () => {
+  magnitude = (): number => {
     return Math.sqrt(this.sqMagnitude());
   };
 
@@ -161,10 +161,10 @@ export class Vector2 {
    * @description ベクトルを正規化する
    * @returns 正規化したベクトル
    */
-  normalize = () => {
+  normalize = (): Vector2 => {
     const mag = this.magnitude();
 
-    return this.multi(1.0 / mag);
+    return this.multiScalar(1.0 / mag);
   };
 
   /**
@@ -172,7 +172,7 @@ export class Vector2 {
    * @description ベクトルのクローンを作成
    * @returns ベクトルのクローンを返す
    */
-  clone = () => {
+  clone = (): Vector2 => {
     return new Vector2(this.x, this.y);
   };
 
@@ -181,7 +181,7 @@ export class Vector2 {
    * @description ベクトルを配列化する
    * @returns ベクトルを配列で返す
    */
-  toArray = (): [number, number] => {
+  toArray = (): number[] => {
     return [this.x, this.y];
   };
 
@@ -190,7 +190,7 @@ export class Vector2 {
    * @description 文字列で出力
    * @returns ベクトルを文字列で返す
    */
-  str = () => {
+  str = (): string => {
     return `vec2(${this.x}, ${this.y})`;
   };
 
@@ -240,7 +240,7 @@ export class Vector2 {
    * @param s スカラー値
    * @returns スカラー倍した結果を返す
    */
-  static multi = (v: Vector2, s: number): Vector2 => {
+  static scalarMulti = (v: Vector2, s: number): Vector2 => {
     return new Vector2(v.x * s, v.y * s);
   };
 
@@ -263,7 +263,7 @@ export class Vector2 {
    * @returns 割り算した結果を返す
    */
   static div = (v: Vector2, s: number): Vector2 => {
-    return Vector2.multi(v, 1.0 / s);
+    return Vector2.scalarMulti(v, 1.0 / s);
   };
 
   /**
@@ -306,18 +306,26 @@ export class Vector2 {
    * @returns 逆ベクトルの結果
    */
   static inverse = (v: Vector2): Vector2 => {
-    return Vector2.multi(v, -1);
+    return Vector2.scalarMulti(v, -1);
   };
 
   /**
    * @static Vector2の静的メソッド
-   * @description 
+   * @description
    * @param v ベクトル
    * @returns
    */
-  static sqMagnitude = (v: Vector2) => {
+  static sqMagnitude = (v: Vector2): number => {
     return v.x * v.x + v.y * v.y;
   };
 
-  
+  /**
+   * @static Vector2の静的メソッド
+   * @description
+   * @param v
+   * @returns
+   */
+  static toArray = (v: Vector2): number[] => {
+    return [v.x, v.y];
+  };
 }
